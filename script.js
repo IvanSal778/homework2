@@ -56,7 +56,6 @@ function validatePassword() {
 }
 
 function validateEmail() {
-    // Find the email input - it doesn't have an id in your HTML
     var emailInput = document.querySelector('input[name="Email"]');
     if (!emailInput) return true; // Skip if not found
     
@@ -91,7 +90,6 @@ function validateEmail() {
 function checkfirstname() {
     var firstname = document.querySelector('input[name="firstname"]');
     if (firstname) {
-        // Basic validation - you can customize this further
         if (firstname.value.trim() === '') {
             firstname.setCustomValidity('First name cannot be empty');
         } else if (!/^[A-Za-z\s'-]+$/.test(firstname.value)) {
@@ -105,7 +103,6 @@ function checkfirstname() {
 function checkmiddle() {
     var middleinitial = document.querySelector('input[name="middleinitial"]');
     if (middleinitial) {
-        // Basic validation for middle initial
         if (middleinitial.value.trim() !== '' && !/^[A-Za-z]$/.test(middleinitial.value)) {
             middleinitial.setCustomValidity('Middle initial must be a single letter');
         } else {
@@ -190,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
     passwordField.addEventListener("input", function() {
         var password = passwordField.value;
 
-        // Check password conditions dynamically
+        // Checks password conditions dynamically
         lengthCheck.style.color = password.length >= 8 ? "green" : "red";
         uppercaseCheck.style.color = /[A-Z]/.test(password) ? "green" : "red";
         lowercaseCheck.style.color = /[a-z]/.test(password) ? "green" : "red";
@@ -213,13 +210,11 @@ function showPassword() {
 
     var formcontents = document.getElementById("myForm");
     
-    // Declare formoutput with var, let, or const to ensure it's defined
     var formoutput = "<table border='1'><tr><th>Name of Data</th><th>Type</th><th>Current Value</th></tr>"; 
     
     var datatype;
     var i;
 
-    // Ensure formcontents exists before proceeding
     if (!formcontents) {
         console.error("Form not found!");
         return;
@@ -233,7 +228,6 @@ function showPassword() {
         if (formcontents.elements[i].value !== "") {
             datatype = formcontents.elements[i].type;
 
-            // Build the table based on element types
             switch (datatype) {
                 case "checkbox":
                     if (formcontents.elements[i].checked) {
@@ -265,10 +259,8 @@ function showPassword() {
     // Close the table
     formoutput += "</table>";
 
-    // Find the output div
     var outputDiv = document.getElementById("outputformdata");
     
-    // Ensure output div exists before setting innerHTML
     if (outputDiv) {
         outputDiv.innerHTML = formoutput;
     } else {
@@ -276,10 +268,8 @@ function showPassword() {
     }
 }
 
-// Ensure the function is added to the global scope
 window.getdata1 = getdata1;
 
-// Add event listener to ensure the function works
 document.addEventListener("DOMContentLoaded", function() {
     var getDataButton = document.getElementById("getdata");
     if (getDataButton) {
